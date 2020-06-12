@@ -1,0 +1,14 @@
+  2.	 Ra
+  1.0	 Pr
+  0.0    Bi
+  0.     ampl
+  0.     omega	 
+ 20.     L
+ 40.     H
+ 100.      time_for_count
+0.000001  eps_poisson
+1000      Max_counter_poisson
+0.001      eps_threshold
+ 0.2      relativ
+ 1.85     relax
+    
