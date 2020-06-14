@@ -66,7 +66,7 @@ write(month, '(I2.2)') dateTimeValues(2)
 write(day, '(I2.2)') dateTimeValues(3)
 write(hour, '(I2.2)') dateTimeValues(5)
 write(minutes, '(I2.2)') dateTimeValues(6)
-resultsDirName = 'results' // year // '_' // month // '_' // day // '_' // hour // '_' // minutes
+resultsDirName = '../hs_results' // year // '_' // month // '_' // day // '_' // hour // '_' // minutes
 call system('mkdir ' // resultsDirName)
 psiDirName = resultsDirName // '/psi'
 TDirName = resultsDirName // '/T'
@@ -75,12 +75,12 @@ call system('mkdir ' // psiDirName)
 call system('mkdir ' // TDirName)
 call system('mkdir ' // phiDirName)
 call system('mkdir ' // resultsDirName // '/animation')
-call system('cp -p ./hsRepository/makeanimation.bat ' // resultsDirName // '/makeanimation.bat')
-call system('cp -p ./hsRepository/fieldsplot.plt ' // resultsDirName // '/fieldsplot.plt')
+call system('cp -p ./makeanimation.sh ' // resultsDirName // '/makeanimation.sh')
+call system('cp -p ./fieldsplot.plt ' // resultsDirName // '/fieldsplot.plt')
 !------------------creating output directories(end)-----------------------
 
 !--------------------Reading data from file(beg)--------------------------
-parametersFileName = './hsRepository/input2.dat'
+parametersFileName = './input2.dat'
 open(1, file = parametersFileName)
 read(1,*) Ra
 read(1,*) Pr
@@ -190,9 +190,9 @@ enddo
 
 print*, 'end of the program'
 
-call system('cd ' // resultsDirName // '/')
 call system('ls')
-call system('./makeanimation.bat')
+call system('chmod 777 '//resultsDirName//'/makeanimation.sh')
+call system('cd '//resultsDirName//' && '//resultsDirName//'/makeanimation.sh')
 
 end program Hele_Shaw
 
